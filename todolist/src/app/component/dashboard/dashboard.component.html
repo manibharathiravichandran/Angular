@@ -1,0 +1,102 @@
+<div class="container-fluid bg-light">
+  <div class="container bg-light">
+    <div class="row mt-4" style="height: 500px">
+      <div class="col"></div>
+      <div class="col-md-6 bg-white">
+        <div class="card bg-warning mt-4">
+          <h4 class="text-white ps-3 pt-2 pb-2">To do</h4>
+        </div>
+
+        <div class="shadow">
+          <div class="input-group p-4">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Enter task"
+              name="task"
+              [(ngModel)]="addTaskValue"
+            />
+            <button
+              class="btn btn-outline-success"
+              type="button"
+              (click)="addTask()"
+            >
+              +
+            </button>
+          </div>
+        </div>
+
+        <h4 class="text-primary mt-4">Task:</h4>
+        <div style="overflow-y: auto; height: 350px">
+          <div class="m-3" *ngFor="let task of taskArr">
+            <div class="p-2 shadow border">
+              <div class="input-group row ps-3">
+                <div class="card col-md-10 border-0">{{ task.task_name }}</div>
+                <button
+                  class="btn btn-outline-primary col me-2"
+                  data-bs-toggle="modal"
+                  type="button"
+                  data-bs-target="#exampleModel"
+                  (click)="call(task)"
+                >
+                  e
+                </button>
+                <div
+                  class="btn btn-outline-danger col"
+                  (click)="deleteTask(task)"
+                >
+                  X
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="modal fade"
+          id="exampleModel"
+          tabindex="-1"
+          role="dialog"
+          aria-labelledby="exampleModalLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Edit Task</h5>
+                <button
+                  type="button"
+                  class="close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                >
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <div class="input-group p-4">
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Enter task"
+                    name="task"
+                    [(ngModel)]="editTaskValue"
+                  />
+                  <button
+                    class="btn btn-outline-success"
+                    type="button"
+                    data-bs-dismiss="modal"
+                    (click)="editTask()"
+                  >
+                    Update
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col"></div>
+    </div>
+  </div>
+</div>
